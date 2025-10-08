@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
+import { NavbarlateralComponent } from '../navbarlateral/navbarlateral.component';
 
 @Component({
   selector: 'app-security',
-  imports: [],
+  imports: [NavbarlateralComponent],
   templateUrl: './security.component.html',
   styleUrl: './security.component.scss'
 })

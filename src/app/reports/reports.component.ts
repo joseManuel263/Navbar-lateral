@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
+import { NavbarlateralComponent } from '../navbarlateral/navbarlateral.component';
 
 @Component({
   selector: 'app-reports',
-  imports: [],
+  imports: [NavbarlateralComponent],
   templateUrl: './reports.component.html',
   styleUrl: './reports.component.scss'
 })

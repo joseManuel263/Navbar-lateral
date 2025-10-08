@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
+import { NavbarlateralComponent } from '../navbarlateral/navbarlateral.component';
 
 @Component({
   selector: 'app-database',
-  imports: [],
+  imports: [NavbarlateralComponent],
   templateUrl: './database.component.html',
   styleUrl: './database.component.scss'
 })
