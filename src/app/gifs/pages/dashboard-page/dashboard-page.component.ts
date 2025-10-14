@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
-import { NavbarlateralComponent } from '../../pages/navbarlateral/navbarlateral.component';
-
+import { RouterOutlet } from '@angular/router';
+import { SideMenuComponent } from '../../components/side-menu/side-menu.component';
 @Component({
   selector: 'app-dashboard',
-  imports: [NavbarlateralComponent],
+  imports: [RouterOutlet, SideMenuComponent],
   templateUrl: './dashboard-page.component.html',
   styleUrl: './dashboard-page.component.scss'
 })
-export default class DashboardComponent {
+export class DashboardComponent {
 
 }
