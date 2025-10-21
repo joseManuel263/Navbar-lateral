@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms'; // <-- IMPORTAR
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-header',
@@ -17,8 +17,7 @@ export class HeaderComponent {
 
   search(): void {
     if (!this.query.trim()) return;
-    // Redirige a /search con query param
     this.router.navigate(['/dashboard/search'], { queryParams: { q: this.query.trim() } });
-    this.query = ''; // opcional: limpiar input
+    this.query = '';
   }
 }

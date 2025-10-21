@@ -15,7 +15,6 @@ export class SearchPageComponent {
   public apiService = inject(ApiService);
   private route = inject(ActivatedRoute);
 
-  // Signals directos desde el servicio
   gifs = this.apiService.gifs;
   loading = this.apiService.loading;
   errorMessage = this.apiService.error;

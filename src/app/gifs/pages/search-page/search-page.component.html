@@ -1,7 +1,7 @@
 <div class="p-6">
-  <h2 class="text-xl font-semibold mb-2 text-slate-700">
-    🔎 Resultados de búsqueda
-    <span *ngIf="apiService.lastQuery()" class="text-slate-500 font-normal text-base">
+  <h2 class="text-2xl font-bold mb-6 text-slate-800">
+    Resultados de búsqueda
+    <span *ngIf="apiService.lastQuery()" class="text-slate-500 text-2xl font-bold mb-6">
       para "{{ apiService.lastQuery() }}"
     </span>
   </h2>

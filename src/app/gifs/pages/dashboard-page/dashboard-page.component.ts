@@ -11,4 +11,11 @@ import { ApiService } from '../../services/api.service';
 })
 export class DashboardComponent {
   constructor(public apiService: ApiService) {}
+
+  toggleMenu() {
+    const menu = document.getElementById('menu');
+    const overlay = document.getElementById('overlay');
+    menu?.classList.toggle('-translate-x-full');
+    overlay?.classList.toggle('hidden');
+  }
 }
