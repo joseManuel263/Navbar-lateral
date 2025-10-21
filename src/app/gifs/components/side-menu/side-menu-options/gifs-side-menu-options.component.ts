@@ -23,7 +23,7 @@ export class GifsSideMenuOptionsComponent {
       icon: 'fa-solid fa-house',
       title: 'Dashboard',
       subtitle: 'Main page overview',
-      router: '/dashboard'
+      router: '/dashboard/home'
     },
     {
       icon: 'fa-solid fa-chart-line',

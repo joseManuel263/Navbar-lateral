@@ -1,43 +1,29 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ApiService } from '../../services/api.service';
+import { Gif } from '../../interfaces/giphy.interfaces';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-search-page',
-  imports: [CommonModule],
+  standalone: true,
+  imports: [CommonModule, RouterModule],
   templateUrl: './search-page.component.html',
   styleUrls: ['./search-page.component.scss']
 })
-export class SearchPageComponent implements OnInit {
+export class SearchPageComponent {
+  public apiService = inject(ApiService);
+  private route = inject(ActivatedRoute);
 
-  gifs: any[] = [];
-  loading = false;
-  errorMessage = '';
+  // Signals directos desde el servicio
+  gifs = this.apiService.gifs;
+  loading = this.apiService.loading;
+  errorMessage = this.apiService.error;
 
-  constructor(private apiService: ApiService) {}
-
-  ngOnInit(): void {
-    console.log('🟢 ngOnInit ejecutado');
-    this.searchGifs();
-  }
-
-  searchGifs(): void {
-    console.log('🔍 Solicitando GIFs...');
-    this.loading = true;
-    this.errorMessage = '';
-
-    this.apiService.searchGifs(15).subscribe({
-      next: (response) => {
-        console.log('✅ Respuesta recibida de Giphy:', response);
-        this.gifs = response.data;
-        console.log('🖼️ GIFs guardados:', this.gifs);
-        this.loading = false;
-      },
-      error: (error) => {
-        this.errorMessage = 'Error al cargar los GIFs 😓';
-        console.error('❌ Error en la API:', error);
-        this.loading = false;
-      }
+  constructor() {
+    this.route.queryParams.subscribe(params => {
+      const query = params['q'] || '';
+      if (query) this.apiService.searchGifs(query);
     });
   }
 }

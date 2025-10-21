@@ -20,6 +20,12 @@ export const routes: Routes = [
           import('./gifs/pages/trending-page/trending-page.component')
             .then(m => m.TrendingPageComponent),
       },
+      {
+        path: 'home',
+        loadComponent: () =>
+          import('./gifs/pages/home/home.component')
+            .then(m => m.HomeComponent),
+      },
     ],
   },
   { path: '**', redirectTo: 'dashboard' },
