@@ -1,11 +1,10 @@
 import { Component, inject, signal, computed, WritableSignal, effect } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ApiService } from '../../services/api.service';
-import { ResultsComponentComponent } from '../../components/results-component/results-component.component';
 @Component({
   selector: 'app-trending-page',
   standalone: true,
-  imports: [CommonModule, ResultsComponentComponent],
+  imports: [CommonModule, ],
   templateUrl: './trending-page.component.html',
   styleUrls: ['./trending-page.component.scss']
 })

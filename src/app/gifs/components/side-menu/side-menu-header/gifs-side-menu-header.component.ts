@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
+import { environment } from '@environments/environment'; // ✅ con alias configurado
 
 @Component({
   selector: 'app-gifs-side-menu-header',
-  imports: [],
   templateUrl: './gifs-side-menu-header.component.html',
-  styleUrl: './gifs-side-menu-header.component.scss'
+  styleUrls: ['./gifs-side-menu-header.component.scss']
 })
 export class GifsSideMenuHeaderComponent {
-
+  envs = environment;
 }

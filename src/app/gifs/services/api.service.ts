@@ -2,14 +2,18 @@ import { Injectable, inject, signal, effect, computed } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Gif, GiphyResponse } from '../interfaces/giphy.interfaces';
+//import { environment } from '../../../environments/environment.development';
+import { environment } from '@environments/environment';
 
 @Injectable({ providedIn: 'root' })
 export class ApiService {
+  envs = environment;
+
   private http = inject(HttpClient);
   private router = inject(Router);
 
-  private readonly apiUrl = 'https://api.giphy.com/v1/gifs';
-  private readonly apiKey = 'JecLl0Pc5P9OYdMjWvtzDPKusnFCzfUa';
+  private readonly apiUrl = this.envs.giphyUrl;
+  private readonly apiKey = this.envs.giphyApiKey;
 
   gifs = signal<Gif[]>([]);
   loading = signal(false);

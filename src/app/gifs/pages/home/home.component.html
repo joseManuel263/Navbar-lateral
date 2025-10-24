@@ -1,59 +1,47 @@
 <div class="flex flex-col items-center justify-center text-center px-4 sm:px-6 py-8 sm:py-12 text-slate-700">
   <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-blue-700 mb-4">
-    Explora el Mundo de los GIFs
+    {{ env.landingPage.title }}
   </h1>
-  
+
   <p class="text-base sm:text-lg text-slate-600 max-w-2xl mb-8 px-2 leading-relaxed">
-    Descubre una experiencia visual única con nuestra aplicación desarrollada en 
-    <strong class="text-blue-700">Angular 19</strong>. 
-    Explora miles de 
-    <span class="text-blue-600 font-semibold">GIFs en tendencia</span>,
-    busca tus 
-    <span class="text-blue-600 font-semibold">animaciones favoritas</span>
-    y sumérgete en el contenido más popular de la web, todo impulsado por la 
-    <a href="https://developers.giphy.com/" target="_blank" class="text-blue-600 font-semibold underline hover:text-blue-800 transition-colors">API oficial de Giphy</a>.
+    {{ env.landingPage.description }}
+    <a
+      [href]="env.landingPage.giphyDocs"
+      target="_blank"
+      class="text-blue-600 font-semibold underline hover:text-blue-800 transition-colors"
+    >
+      API oficial de Giphy
+    </a>.
   </p>
-  
+
   <img
-    src="https://media.giphy.com/media/3oKIPnAiaMCws8nOsE/giphy.gif"
+    [src]="env.landingPage.gifImage"
     alt="GIF animado de celebración"
     class="rounded-2xl shadow-2xl w-64 sm:w-80 lg:w-96 mb-8 sm:mb-10 border-4 border-slate-200 hover:border-blue-400 transition-all duration-300 hover:scale-105"
   />
-  
+
   <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 max-w-3xl w-full px-4">
-    <div class="bg-gradient-to-br from-blue-50 to-white shadow-md hover:shadow-xl p-6 rounded-xl border border-blue-100 transition-all duration-300 hover:-translate-y-1">
-      <div class="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center mb-4 mx-auto">
+    <div
+      *ngFor="let feature of env.landingPage.features"
+      class="bg-gradient-to-br from-blue-50 to-white shadow-md hover:shadow-xl p-6 rounded-xl border border-blue-100 transition-all duration-300 hover:-translate-y-1"
+    >
+      <div class="w-12 h-12 rounded-lg flex items-center justify-center mb-4 mx-auto" [ngClass]="feature.iconColor">
         <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
         </svg>
       </div>
-      <h2 class="text-xl font-bold text-blue-700 mb-3">Tendencias en Vivo</h2>
-      <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
-        Mantente al día con los GIFs más populares y virales del momento. Contenido actualizado en tiempo real directo desde Giphy.
-      </p>
-    </div>
-    
-    <div class="bg-gradient-to-br from-green-50 to-white shadow-md hover:shadow-xl p-6 rounded-xl border border-green-100 transition-all duration-300 hover:-translate-y-1">
-      <div class="w-12 h-12 bg-green-600 rounded-lg flex items-center justify-center mb-4 mx-auto">
-        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-        </svg>
-      </div>
-      <h2 class="text-xl font-bold text-green-700 mb-3">Búsqueda Inteligente</h2>
-      <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
-        Encuentra exactamente lo que buscas. Explora millones de GIFs por categorías, palabras clave o temas específicos.
-      </p>
+      <h2 class="text-xl font-bold text-blue-700 mb-3">{{ feature.title }}</h2>
+      <p class="text-slate-600 text-sm sm:text-base leading-relaxed">{{ feature.description }}</p>
     </div>
   </div>
-  
+
   <footer class="mt-8 sm:mt-10 text-slate-500 text-xs sm:text-sm px-4">
-    <p class="mb-2">Desarrollado con dedicación usando tecnologías modernas</p>
+    <p class="mb-2">{{ env.landingPage.footerText }}</p>
     <div class="flex items-center justify-center gap-3 flex-wrap">
-      <span class="font-semibold text-slate-700">Angular 19</span>
-      <span class="text-slate-400">•</span>
-      <span class="font-semibold text-slate-700">Tailwind CSS</span>
-      <span class="text-slate-400">•</span>
-      <span class="font-semibold text-slate-700">Giphy API</span>
+      <ng-container *ngFor="let tech of env.landingPage.footerTechs; let last = last">
+        <span class="font-semibold text-slate-700">{{ tech }}</span>
+        <span *ngIf="!last" class="text-slate-400">•</span>
+      </ng-container>
     </div>
   </footer>
 </div>

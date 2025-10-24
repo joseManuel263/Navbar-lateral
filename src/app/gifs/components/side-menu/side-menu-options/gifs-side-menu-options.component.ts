@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { OptionMenuComponent } from '../option-menu/option-menu.component';
 import { CommonModule } from '@angular/common';
+import { environment } from '@environments/environment';
 
 interface MenuOption {
   icon: string;
@@ -17,25 +18,5 @@ interface MenuOption {
   styleUrls: ['./gifs-side-menu-options.component.scss']
 })
 export class GifsSideMenuOptionsComponent {
-
-  menuOptions: MenuOption[] = [
-    {
-      icon: 'fa-solid fa-house',
-      title: 'Dashboard',
-      subtitle: 'Main page overview',
-      router: '/dashboard/home'
-    },
-    {
-      icon: 'fa-solid fa-chart-line',
-      title: 'Trending',
-      subtitle: 'The best gifs',
-      router: '/dashboard/trending'
-    },
-    {
-      icon: 'fa-solid fa-magnifying-glass',
-      title: 'Search',
-      subtitle: 'Find your favorite gifs',
-      router: '/dashboard/search'
-    },
-  ];
+  public menuOptions: MenuOption[] = environment.sideMenu;
 }
